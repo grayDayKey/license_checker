@@ -1,3 +1,3 @@
-int calculate() {
-  return 6 * 7;
-}
+library license_checker;
+
+export 'src/core.dart';

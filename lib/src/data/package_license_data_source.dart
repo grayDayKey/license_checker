@@ -23,8 +23,6 @@ class PackageLicenseDataSource extends DataSource<PackageLicense, Directory> {
 
   @override
   PackageLicense getData() {
-    File licenseFile;
-    LicenseChecker checker;
 
     final files = source.listSync(recursive: false).whereType<File>();
 
@@ -33,7 +31,12 @@ class PackageLicenseDataSource extends DataSource<PackageLicense, Directory> {
         final fileName = path.basename(file.path).toUpperCase();
 
         if (RegExp(licensePattern).hasMatch(fileName)) {
-          return PackageLicense(source, LicenseFactory.fromLicenseFile(file));
+          return PackageLicense(
+            source,
+            LicenseChecker.getLicenseType(
+              file.readAsStringSync()
+            )
+          );
         }
       }
     }

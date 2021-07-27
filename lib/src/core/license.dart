@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:checker/src/core/license_checker.dart';
 import 'package:path/path.dart' as path;
 
 enum License {
@@ -13,11 +12,6 @@ enum License {
   WTFPL,
   unknown,
   unlicensed,
-}
-
-extension LicenseFactory on License {
-  static License fromLicenseFile(File licenseFile) =>
-      LicenseParser.parse(licenseFile);
 }
 
 class PackageLicense {
