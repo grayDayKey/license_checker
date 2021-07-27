@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:checker/src/parser/package_license_parser.dart';
+import 'package:checker/src/core/license_checker.dart';
 import 'package:path/path.dart' as path;
 
 enum License {

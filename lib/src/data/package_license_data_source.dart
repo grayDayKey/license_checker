@@ -1,7 +1,8 @@
 import 'dart:io';
 
+import 'package:checker/src/core/license.dart';
+import 'package:checker/src/core/license_checker.dart';
 import 'package:checker/src/data/data_source.dart';
-import 'package:checker/src/domain/license.dart';
 import 'package:path/path.dart' as path;
 
 const List<String> _kLicensePatterns = [
@@ -21,8 +22,9 @@ class PackageLicenseDataSource extends DataSource<PackageLicense, Directory> {
   }
 
   @override
-  PackageLicense retrieveDataFromSource() {
+  PackageLicense getData() {
     File licenseFile;
+    LicenseChecker checker;
 
     final files = source.listSync(recursive: false).whereType<File>();
 

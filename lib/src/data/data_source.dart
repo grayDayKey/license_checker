@@ -3,5 +3,5 @@ abstract class DataSource<T, S> {
 
   DataSource(this.source);
 
-  T retrieveDataFromSource();
+  T getData();
 }

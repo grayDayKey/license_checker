@@ -26,7 +26,7 @@ class PackagesDataSource
   }
 
   @override
-  List<Directory> retrieveDataFromSource() {
+  List<Directory> getData() {
     if (!_packageConfigFile.existsSync()) {
       throw DataSourceException('could not find package config file');
     }

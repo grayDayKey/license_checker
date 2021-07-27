@@ -7,15 +7,15 @@ import 'package:path/path.dart';
 
 void main(List<String> arguments) {
   final dependenciesDataSource = DependenciesDataSource.fromPubspec();
-  final dependencies = dependenciesDataSource.retrieveDataFromSource();
+  final dependencies = dependenciesDataSource.getData();
 
   final packagesDataSource =
       PackagesDataSource.fromPubspecDependecies(dependencies);
-  final packages = packagesDataSource.retrieveDataFromSource();
+  final packages = packagesDataSource.getData();
 
   for (final package in packages) {
     final licenseDataSource = PackageLicenseDataSource.fromPackage(package);
-    final packageLicense = licenseDataSource.retrieveDataFromSource();
+    final packageLicense = licenseDataSource.getData();
     print('${packageLicense.packageName} -> ${packageLicense.license}');
   }
 }

@@ -16,7 +16,7 @@ class DependenciesDataSource
   }
 
   @override
-  Map<String, pubspec_parser.Dependency> retrieveDataFromSource() {
+  Map<String, pubspec_parser.Dependency> getData() {
     if (!source.existsSync()) {
       throw DataSourceException('could not find pubspec file');
     }
