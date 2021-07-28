@@ -1,31 +1,47 @@
 import 'package:checker/src/core/license.dart';
 import 'package:meta/meta.dart';
 
+/// Checks if the license is one of [supportedLicenses]
+/// 
+/// * [license] is a type of license for computer software and other products that allows the source code,
+/// blueprint or design to be used modified and/or shared under defined terms and conditions.
 abstract class LicenseChecker {
 
   LicenseChecker(this.license);
-
+  
+  /// Creates an instance of [LicenseChecker] based on [type]
+  ///
+  /// * [type] one of [supportedLicenses]
+  /// * [license] is a type of license for computer software and other products that allows the source code,
+  /// blueprint or design to be used modified and/or shared under defined terms and conditions.
   factory LicenseChecker.forType(License type, String license) {
     switch (type) {
       case License.MIT:
-        return MitLicenseChecker(license);
+        return _MitLicenseChecker(license);
       case License.APACHE:
-        return ApacheLicenseChecker(license);
+        return _ApacheLicenseChecker(license);
       case License.BSD:
-        return BsdLicenseChecker(license);
+        return _BsdLicenseChecker(license);
       case License.GPL:
-        return GplLicenseChecker(license);
+        return _GplLicenseChecker(license);
       case License.ICS:
-        return IcsLicenseChecker(license);
+        return _IcsLicenseChecker(license);
       case License.LGPL:
-        return LgplLicenseChecker(license);
+        return _LgplLicenseChecker(license);
       case License.WTFPL:
-        return WtfplLicenseChecker(license);
+        return _WtfplLicenseChecker(license);
       default:
         throw Exception('Unsopported license type: $type');
     }
   }
 
+  /// Checks if [license] is [String], if not returns [License.unlicensed],
+  /// then checks if [license] is one of [supportedLicenses], if not return [License.unknown]
+  /// 
+  /// * [license] is a type of license for computer software and other products that allows the source code,
+  /// blueprint or design to be used modified and/or shared under defined terms and conditions.
+  /// 
+  /// Returns [License]
   static License getLicenseType(String license) {
     if (license is! String) {
       License.unlicensed;
@@ -58,6 +74,7 @@ abstract class LicenseChecker {
   @protected
   List<RegExp> get patterns;
 
+  /// List of supported [License]
   static const List<License> supportedLicenses = [
     License.MIT,
     License.BSD,
@@ -68,9 +85,9 @@ abstract class LicenseChecker {
   ];
 }
 
-class MitLicenseChecker extends LicenseChecker {
+class _MitLicenseChecker extends LicenseChecker {
 
-  MitLicenseChecker(String license) : super(license);
+  _MitLicenseChecker(String license) : super(license);
 
   @override
   License get type => License.MIT;
@@ -88,9 +105,9 @@ class MitLicenseChecker extends LicenseChecker {
   ];
 }
 
-class BsdLicenseChecker extends LicenseChecker {
+class _BsdLicenseChecker extends LicenseChecker {
 
-  BsdLicenseChecker(String license) : super(license);
+  _BsdLicenseChecker(String license) : super(license);
 
   @override
   License get type => License.BSD;
@@ -104,9 +121,9 @@ class BsdLicenseChecker extends LicenseChecker {
   ];
 }
 
-class GplLicenseChecker extends LicenseChecker {
+class _GplLicenseChecker extends LicenseChecker {
 
-  GplLicenseChecker(String license) : super(license);
+  _GplLicenseChecker(String license) : super(license);
 
   @override
   License get type => License.GPL;
@@ -117,8 +134,8 @@ class GplLicenseChecker extends LicenseChecker {
   ];
 }
 
-class ApacheLicenseChecker extends LicenseChecker {
-  ApacheLicenseChecker(String license) : super(license);
+class _ApacheLicenseChecker extends LicenseChecker {
+  _ApacheLicenseChecker(String license) : super(license);
 
   @override
   License get type => License.APACHE;
@@ -129,8 +146,8 @@ class ApacheLicenseChecker extends LicenseChecker {
   ];
 }
 
-class LgplLicenseChecker extends LicenseChecker {
-  LgplLicenseChecker(String license) : super(license);
+class _LgplLicenseChecker extends LicenseChecker {
+  _LgplLicenseChecker(String license) : super(license);
   
   @override
   List<RegExp> get patterns => [
@@ -143,8 +160,8 @@ class LgplLicenseChecker extends LicenseChecker {
   License get type => License.LGPL;
 }
 
-class IcsLicenseChecker extends LicenseChecker {
-  IcsLicenseChecker(String license) : super(license);
+class _IcsLicenseChecker extends LicenseChecker {
+  _IcsLicenseChecker(String license) : super(license);
 
   @override
   List<RegExp> get patterns => [
@@ -156,8 +173,8 @@ class IcsLicenseChecker extends LicenseChecker {
   License get type => License.ICS;
 }
 
-class WtfplLicenseChecker extends LicenseChecker {
-  WtfplLicenseChecker(String license) : super(license);
+class _WtfplLicenseChecker extends LicenseChecker {
+  _WtfplLicenseChecker(String license) : super(license);
 
   @override
   List<RegExp> get patterns => [
