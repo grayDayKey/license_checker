@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:checker/src/data/data_source.dart';
-import 'package:checker/src/data/data_source_exception.dart';
+import 'package:license_checker/src/data/data_source.dart';
+import 'package:license_checker/src/data/data_source_exception.dart';
 import 'package:pubspec_parse/pubspec_parse.dart' as pubspec_parser;
 
 const _kPubspecPath = 'pubspec.yaml';

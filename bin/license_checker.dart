@@ -1,6 +1,4 @@
-import 'package:checker/src/data/dependencies_data_source.dart';
-import 'package:checker/src/data/package_license_data_source.dart';
-import 'package:checker/src/data/packages_data_source.dart';
+import 'package:license_checker/license_checker.dart';
 
 void main(List<String> arguments) {
   final dependenciesDataSource = DependenciesDataSource.fromPubspec();

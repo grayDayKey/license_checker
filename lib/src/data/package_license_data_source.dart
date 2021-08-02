@@ -1,8 +1,7 @@
 import 'dart:io';
 
-import 'package:checker/src/core/license.dart';
-import 'package:checker/src/core/license_checker.dart';
-import 'package:checker/src/data/data_source.dart';
+import 'package:license_checker/license_checker.dart';
+import 'package:license_checker/src/data/data_source.dart';
 import 'package:path/path.dart' as path;
 
 const List<String> _kLicensePatterns = [

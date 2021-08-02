@@ -1,7 +1,6 @@
 import 'dart:io';
 
-import 'package:checker/src/core/license.dart';
-import 'package:checker/src/core/license_checker.dart';
+import 'package:license_checker/license_checker.dart';
 import 'package:path/path.dart' as path;
 import 'package:test/test.dart';
 

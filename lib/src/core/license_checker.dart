@@ -1,4 +1,4 @@
-import 'package:checker/src/core/license.dart';
+import 'package:license_checker/license_checker.dart';
 import 'package:meta/meta.dart';
 
 /// Checks if the license is one of [supportedLicenses]
